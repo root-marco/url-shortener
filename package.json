@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-	"type": "module",
+  "type": "module",
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "handlebars": "^4.7.6",
+    "express-handlebars": "^5.2.0",
     "mongoose": "^5.11.15"
   },
   "devDependencies": {

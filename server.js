@@ -22,7 +22,9 @@ try {
 }
 
 app.get('/', async (req, res) => {
-	const find = await ShortUrl.find().lean();
+	const find = await ShortUrl.find().sort({
+		_id: -1
+	}).lean();
 	res.render('home', {
 		shortUrls: find,
 	});

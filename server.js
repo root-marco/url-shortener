@@ -13,7 +13,7 @@ try {
 		useUnifiedTopology: true,
 	});
 } catch (error) {
-	handleError(error); 
+	console.log(error); 
 }
 
 app.get('/', (req, res) => {

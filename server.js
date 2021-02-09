@@ -39,6 +39,12 @@ app.get('/:shortUrl', async (req, res) => {
 	const findOne = await ShortUrl.findOne({
 		short: req.params.shortUrl,
 	});
+	if (findOne == null) return res.sendStatus(404);
+
+	findOne.clicks++;
+	findOne.save();
+
+	res.redirect(findOne.full);
 });
 
 app.listen(process.env.PORT || 3000, () => {

@@ -20,13 +20,27 @@
 			</tr>
 		</thead>
 
+		{{#each shortUrls}}
+
 		<tbody>
 			<tr>
-				<td><a href="google.com">Google</a></td>
-				<td><a href="/123456">123456</a></td>
-				<td>10</td>
+				<td><a href="{{full}}">{{full}}</a></td>
+				<td><a href="{{short}}">{{short}}</a></td>
+				<td>{{clicks}}</td>
 			</tr>
 		</tbody>
+
+		{{else}}
+
+		<tbody>
+			<tr>
+				<td><small>no full url</small></td>
+				<td><small>no shortened url</small></td>
+				<td><small>no clicks</small></td>
+			</tr>
+		</tbody>
+
+		{{/each}}
 
 	</table>
 

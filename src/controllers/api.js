@@ -35,7 +35,7 @@ export async function shortUrlPost(req, res) {
 		}
 	} else {
 		res.json({
-			error: "invalid URL",
+			error: 'invalid url',
 		});
 	}
 

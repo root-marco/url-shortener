@@ -1,19 +1,25 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import dotenv from "dotenv"; dotenv.config();
+import dotenv from "dotenv";
+dotenv.config();
 
 // APP
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(express.urlencoded({
+  extended: true,
+}));
+app.use(express.json());
 app.use(cors());
-app.use('/public', express.static(`${process.cwd()}/public`));
+app.use("/src/public", express.static(`${process.cwd()}/src/public`));
+const PORT = process.env.PORT || 3000;
 
 // MONGOOSE
 try {
   mongoose.connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   });
   console.info("database connected");
 } catch (error) {
@@ -22,16 +28,12 @@ try {
 }
 
 // ROUTES
-app.get('/', function (req, res) {
-  res.sendFile(process.cwd() + '/views/index.html');
-});
-app.get('/api/hello', function (req, res) {
-  res.json({
-    greeting: 'hello API'
-  });
-});
+import rootRouter from "./src/routes/root.js";
+app.use("/", rootRouter);
+import apiRouter from "./src/routes/api.js";
+app.use("/api", apiRouter);
 
 // LISTEN
 app.listen(PORT, function () {
-  console.log(`Listening on port ${PORT}`);
+  console.log(`listening on port ${PORT}`);
 });

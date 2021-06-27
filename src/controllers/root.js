@@ -1,5 +1,5 @@
-export async function rootGet (req, res) {
+export async function rootGet(req, res) {
 
-	res.sendFile(`${process.cwd()}/src/views/index.html`);
+    res.sendFile(`${process.cwd()}/src/views/index.html`);
 
 }

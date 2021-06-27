@@ -7,7 +7,7 @@ dotenv.config();
 // APP
 const app = express();
 app.use(express.urlencoded({
-  extended: true,
+    extended: true,
 }));
 app.use(express.json());
 app.use(cors());
@@ -16,15 +16,15 @@ const PORT = process.env.PORT || 3000;
 
 // MONGOOSE
 try {
-  mongoose.connect(process.env.DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  });
-  console.info("database connected");
+    mongoose.connect(process.env.DB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+    });
+    console.info("database connected");
 } catch (error) {
-  console.error(error);
-  process.exit(1);
+    console.error(error);
+    process.exit(1);
 }
 
 // ROUTES
@@ -35,5 +35,5 @@ app.use("/api", apiRouter);
 
 // LISTEN
 app.listen(PORT, function () {
-  console.log(`listening on port ${PORT}`);
+    console.log(`listening on port ${PORT}`);
 });
